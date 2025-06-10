@@ -8,13 +8,13 @@ if [[ -n $(git status --porcelain) ]]; then
   exit 1
 fi
 
-# 'master' 동기화
-git checkout master || { echo "⛔️ master 브랜치로 전환할 수 없습니다."; exit 1; }
-git pull origin master || { echo "⛔️ master 브랜치를 가져올 수 없습니다."; exit 1; }
+# 'main' 동기화
+git checkout main || { echo "⛔️ main 브랜치로 전환할 수 없습니다."; exit 1; }
+git pull origin main || { echo "⛔️ main 브랜치를 가져올 수 없습니다."; exit 1; }
 
 # 현재 브랜치로 돌아가기
 git checkout "$current_branch" || { echo "⛔️ $current_branch 브랜치로 전환할 수 없습니다."; exit 1; }
-git merge master -m "Merged master into $current_branch" || { echo "⛔️ master와 병합할 수 없습니다."; exit 1; }
+git merge main -m "Merged main into $current_branch" || { echo "⛔️ main와 병합할 수 없습니다."; exit 1; }
 
 # 'develop' 브랜치로 체크아웃
 git checkout develop || { echo "⛔️ develop 브랜치로 전환할 수 없습니다."; exit 1; }

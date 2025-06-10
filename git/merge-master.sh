@@ -8,19 +8,19 @@ if [[ -n $(git status --porcelain) ]]; then
   exit 1
 fi
 
-# 'master' 동기화
-git checkout master || { echo "⛔️ master 브랜치로 전환할 수 없습니다."; exit 1; }
-git pull origin master || { echo "⛔️ master 브랜치를 가져올 수 없습니다."; exit 1; }
+# 'main' 동기화
+git checkout main || { echo "⛔️ main 브랜치로 전환할 수 없습니다."; exit 1; }
+git pull origin main || { echo "⛔️ main 브랜치를 가져올 수 없습니다."; exit 1; }
 
-# 'master' 브랜치로 체크아웃
-git checkout master || { echo "⛔️ master 브랜치로 전환할 수 없습니다."; exit 1; }
-git pull origin master || { echo "⛔️ master 브랜치를 가져올 수 없습니다."; exit 1; }
+# 'main' 브랜치로 체크아웃
+git checkout main || { echo "⛔️ main 브랜치로 전환할 수 없습니다."; exit 1; }
+git pull origin main || { echo "⛔️ main 브랜치를 가져올 수 없습니다."; exit 1; }
 
-# 작업 브랜치를 'master'에 병합
-git merge "$current_branch" -m "Merged $current_branch into master" || { echo "⛔️ $current_branch를 master와와 병합할 수 없습니다."; exit 1; }
+# 작업 브랜치를 'main'에 병합
+git merge "$current_branch" -m "Merged $current_branch into main" || { echo "⛔️ $current_branch를 main와와 병합할 수 없습니다."; exit 1; }
 
 # 변경 사항을 원격 저장소에 푸시
-git push origin master || { echo "⛔️ master 브랜치를 원격 저장소에 푸시할 수 없습니다."; exit 1; }
+git push origin main || { echo "⛔️ main 브랜치를 원격 저장소에 푸시할 수 없습니다."; exit 1; }
 
 # 작업 브랜치로 돌아가기
 git checkout "$current_branch" || { echo "⛔️ $current_branch 브랜치로 돌아갈 수 없습니다."; exit 1; }

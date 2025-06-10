@@ -1,0 +1,135 @@
+/* StyleGuidePage.module.css */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 24px;
+  font-family: 'Noto Sans KR', sans-serif;
+  line-height: 1.6;
+}
+
+.pageTitle {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 32px;
+}
+
+/* Typography */
+.textLarge {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.textMedium {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.textSmall {
+  font-size: 14px;
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+
+.link {
+  color: #0077cc;
+  text-decoration: underline;
+}
+
+/* Buttons */
+.btnLarge,
+.btnMedium,
+.btnSmall {
+  border: none;
+  color: white;
+  background-color: #0077cc;
+  border-radius: 8px;
+  margin-right: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btnLarge {
+  padding: 12px 24px;
+  font-size: 18px;
+}
+
+.btnMedium {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.btnSmall {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.btnDisabled {
+  background-color: #ccc;
+  color: #666;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: not-allowed;
+}
+
+/* Inputs */
+.input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+
+.select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+/* Modal & Toast */
+.modal {
+  padding: 20px;
+  border: 1px solid #222;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 12px;
+}
+
+.toast {
+  padding: 12px 20px;
+  background-color: #0077cc;
+  color: white;
+  border-radius: 6px;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+/* Color Palette */
+.colorBoxPrimary,
+.colorBoxSecondary,
+.colorBoxAccent {
+  width: 160px;
+  padding: 12px;
+  color: white;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.colorBoxPrimary {
+  background-color: #0077cc;
+}
+
+.colorBoxSecondary {
+  background-color: #6c757d;
+}
+
+.colorBoxAccent {
+  background-color: #e83e8c;
+}

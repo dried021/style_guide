@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import styles from "./StyleGuidePage.module.css";
 
 export default function StyleGuidePage() {
@@ -10,7 +11,7 @@ export default function StyleGuidePage() {
       <header className={styles.header}>
         <div className={styles.logo}>지구방방</div>
         <nav className={styles.nav}>
-          <a href="#">카테고리1</a>
+          <Link to="/travel-test">카테고리1</Link>
           <a href="#">카테고리2</a>
           <a href="#">카테고리3</a>
           <a href="#">카테고리4</a>

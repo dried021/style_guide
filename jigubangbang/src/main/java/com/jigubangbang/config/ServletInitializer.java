@@ -1,16 +1,16 @@
-package com.bookfox.config;
+package com.jigubangbang.config;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-import com.bookfox.LitLogApplication;
+import com.jigubangbang.JigubangbangApplication;
 
 
 public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(LitLogApplication.class);
+		return application.sources(com.jigubangbang.JigubangbangApplication.class);
 	}
 
 }

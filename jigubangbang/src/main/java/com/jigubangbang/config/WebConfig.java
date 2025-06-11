@@ -1,4 +1,4 @@
-package com.bookfox.config;
+package com.jigubangbang.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.lang.NonNull;
@@ -14,9 +14,9 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedHeaders("*")
                 .allowCredentials(true);
     }
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/images/profile/*")
-                .addResourceLocations("file:uploads/profile-images/");
-    }
+    // @Override
+    // public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    //     registry.addResourceHandler("/images/profile/*")
+    //             .addResourceLocations("file:uploads/profile-images/");
+    // }
 }

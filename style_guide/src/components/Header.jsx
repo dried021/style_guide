@@ -4,6 +4,8 @@ import styles from '../styles/Header.module.css';
 import logo from '../assets/logo.png';
 import diamond from '../assets/diamond_white.svg';
 import ProfileDropdown from './ProfileDropdown';
+import { Link } from 'react-router-dom';
+
 
 export default function Header() {
     return (
@@ -36,6 +38,8 @@ export default function Header() {
             <img src={logo} className={styles.logo}/>
             
             <nav className={styles.menu}>
+                <span><Link to="/travel-test">스타일테스크</Link></span>
+                <span><Link to="/style-guide">스타일가이드</Link></span>
                 <span>퀘스트</span>
                 <span>커뮤니티 <span className={styles.badge}>New</span></span>
                 <span>여행기록 <span className={styles.badge}>New</span></span>

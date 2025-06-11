@@ -12,7 +12,7 @@ export default function StyleGuidePage() {
         <div className={styles.logo}>지구방방</div>
         <nav className={styles.nav}>
           <Link to="/travel-test">카테고리1</Link>
-          <a href="#">카테고리2</a>
+          <a href="/">메인 페이지</a>
           <a href="#">카테고리3</a>
           <a href="#">카테고리4</a>
         </nav>

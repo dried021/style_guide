@@ -7,13 +7,11 @@ import MainPage from "./MainPage";
 function App() {
   return (
     <div>
-      <MainPage/>
-      <Router>
         <Routes>
-          <Route path="/" element={<StyleGuidePage />} />
+          <Route path="/" element={<MainPage/>} />
+          <Route path="/style-guide" element={<StyleGuidePage/>}/>
           <Route path="/travel-test" element={<TravelTypeTest />} />
         </Routes>
-    </Router>
     </div>
   );
 }

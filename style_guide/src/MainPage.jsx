@@ -42,7 +42,8 @@ export default function MainPage() {
                 <div className={styles.colorBox}  style={{backgroundColor: '#6b6b6b'}}></div>#6b6b6b
                 <div className={styles.colorBox}  style={{backgroundColor: '#1a8917'}}></div>#1a8917
                 <div className={styles.colorBox}  style={{backgroundColor: '#83D9E0'}}></div>#83D9E0
-
+                <br/>
+                <br/>
                 <div className={styles.colorBox}  style={{backgroundColor: '#2585C1'}}></div>#2585C1
                 <div className={styles.colorBox}  style={{backgroundColor: '#0B79B8'}}></div>#0B79B8
                 <div className={styles.colorBox}  style={{backgroundColor: '#ABBA17'}}></div>#ABBA17

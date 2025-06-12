@@ -1,6 +1,7 @@
 import SearchBar from './components/SearchBar';
 import Header from './components/Header';
 import styles from './styles/MainPage.module.css';
+import Vote from './minjeong/vote';
 
 export default function MainPage() {
     return (
@@ -54,6 +55,9 @@ export default function MainPage() {
 
                 <h2>Search Bar</h2>
                 <SearchBar placeholder="검색어 입력..." title="검색 항목" recommended={["검색어", "검색어", "검색어"]}/>
+
+                <Vote/>
+                
             </div>
         </div>
     );

@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Vote.module.css';
+import check from '../assets/common/check.svg';
+import clock from '../assets/common/clock.svg';
+import user from '../assets/common/user.svg';
+import visibility from '../assets/vote/visibility.svg';
+import visibility_off from '../assets/vote/visibility_off.svg'
 
 const Vote = ({ 
   voteData, 
@@ -89,19 +94,19 @@ const Vote = ({
 
           <div className={styles.voteInfo}>
             <div className={styles.infoItem}>
-              <img src="./user.svg" alt="user" />
+              <img src={user} alt="user" />
               <span>{totalVotes}명 투표</span>
             </div>
             {vote.end_date && (
               <div className={styles.infoItem}>
-                <img src="./clock.svg" alt="clock" />
+                <img src={clock} alt="clock" />
                 <span className={isExpired ? styles.infoItemExpired : ''}>
                   {isExpired ? '투표 종료' : `마감: ${formatDate(vote.end_date)}`}
                 </span>
               </div>
             )}
             <div className={styles.infoItem}>
-              <img src={vote.blind_status === 'BLINDED' ? './visibility_off.svg' : './visibility.svg'} alt="visibility" />
+              <img src={vote.blind_status === 'BLINDED' ? visibility_off : visibility} alt="visibility" />
               <span>{vote.blind_status === 'BLINDED' ? '익명 투표' : '공개 투표'}</span>
             </div>
           </div>
@@ -121,7 +126,7 @@ const Vote = ({
               >
                 <div className={styles.voteOptionContent}>
                   <div className={styles.voteOptionLeft}>
-                    {isSelected && <img src="./check.svg" alt="check" />}
+                    {isSelected && <img src={check} alt="check" />}
                     <span>{option.option_title}</span>
                   </div>
                   {showResults && (
@@ -153,14 +158,14 @@ const Vote = ({
 
         {hasVoted && (
           <div className={`${styles.statusMessage} ${styles.statusSuccess}`}>
-            <img src="./check.svg" alt="check" />
+            <img src={check} alt="check" />
             투표가 완료되었습니다
           </div>
         )}
 
         {isExpired && (
           <div className={`${styles.statusMessage} ${styles.statusExpired}`}>
-            <img src="./clock.svg" alt="clock" />
+            <img src={clock} alt="clock" />
             투표가 종료되었습니다
           </div>
         )}

@@ -115,7 +115,7 @@ function TestPage() {
 
       {/* 투표 컴포넌트 또는 생성 컴포넌트 */}
       {selectedExample === 'create' ? (
-        <VoteCreate is_admin="true" onVoteUpdate={handleVoteUpdate} />
+        <VoteCreate onVoteUpdate={handleVoteUpdate} />
       ) : (
         <Vote
           voteData={currentVoteData}

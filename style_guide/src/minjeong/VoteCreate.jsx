@@ -1,8 +1,8 @@
 // VoteCreate.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './VoteCreate.module.css';
 
-const VoteCreate = ({ is_admin, onVoteUpdate }) => {
+const VoteCreate = ({ onVoteUpdate }) => {
   const [vote, setVote] = useState({
     id: '',
     user_id: '',
@@ -17,11 +17,18 @@ const VoteCreate = ({ is_admin, onVoteUpdate }) => {
     blind_status: 'VISIBLE'
   });
 
+  
+
   const [voteOptions, setVoteOptions] = useState([
     { id: '1', vote_id: '', option_title: '', vote_count: 0 },
     { id: '2', vote_id: '', option_title: '', vote_count: 0 }
   ]);
 
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+      setIsAdmin(false);
+  }, []);
 
   const updateVoteSettings = (field, value) => {
     setVote(prev => ({ ...prev, [field]: value }));
@@ -125,7 +132,7 @@ const VoteCreate = ({ is_admin, onVoteUpdate }) => {
         
 
         <div className={styles.settingsPanel}>
-            {is_admin && 
+            {isAdmin && 
                 <div className={styles.checkboxGroup}>
                     <input
                         type="checkbox"

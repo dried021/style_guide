@@ -21,7 +21,10 @@ const Vote = ({
       const total = voteData.options?.reduce((sum, opt) => sum + opt.vote_count, 0) || 0;
       setTotalVotes(total);
       setIsExpired(new Date() > new Date(voteData.end_date));
-      setHasVoted(false); // 실제는 API 체크 필요
+
+      // #TODO 실제는 API 체크 필요
+      setHasVoted(false); 
+
     }
   }, [voteData]);
 
@@ -99,7 +102,7 @@ const Vote = ({
             )}
             <div className={styles.infoItem}>
               <img src={vote.blind_status === 'BLINDED' ? './visibility_off.svg' : './visibility.svg'} alt="visibility" />
-              <span>{vote.blind_status === 'BLINDED' ? '결과 숨김' : '결과 공개'}</span>
+              <span>{vote.blind_status === 'BLINDED' ? '익명 투표' : '공개 투표'}</span>
             </div>
           </div>
         </div>

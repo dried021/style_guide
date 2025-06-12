@@ -1,8 +1,8 @@
 // VoteCreate.jsx
 import React, { useState } from 'react';
-import styles from './Vote.module.css';
+import styles from './VoteCreate.module.css';
 
-const VoteCreate = ({ onVoteUpdate }) => {
+const VoteCreate = ({ is_admin, onVoteUpdate }) => {
   const [vote, setVote] = useState({
     id: '',
     user_id: '',
@@ -21,6 +21,7 @@ const VoteCreate = ({ onVoteUpdate }) => {
     { id: '1', vote_id: '', option_title: '', vote_count: 0 },
     { id: '2', vote_id: '', option_title: '', vote_count: 0 }
   ]);
+
 
   const updateVoteSettings = (field, value) => {
     setVote(prev => ({ ...prev, [field]: value }));
@@ -51,10 +52,19 @@ const VoteCreate = ({ onVoteUpdate }) => {
   return (
     <div className={styles.voteContainer}>
       <div className={styles.contentPadding}>
-        <h2 className={styles.title}>새 투표 만들기</h2>
+        <h3 className={styles.voteTitle}>새 투표 만들기</h3>
+        <div className={styles.badgeContainer}>
+                        {vote.is_official && <span className={`${styles.badge} ${styles.badgeOfficial}`}>공식</span>}
+                {vote.is_anonymous && <span className={`${styles.badge} ${styles.badgeAnonymous}`}>익명</span>}
+                {vote.is_multiple_choice && (
+                    <span className={`${styles.badge} ${styles.badgeMultiple}`}>
+                    중복선택 (최대 {vote.max_choices}개)
+                    </span>
+                )}
+        </div>
 
         <div className={styles.formGroup}>
-          <label className={styles.label}>투표 제목</label>
+          <h3 className={styles.voteSubtitle}>투표 제목</h3>
           <input
             type="text"
             className={styles.input}
@@ -65,7 +75,11 @@ const VoteCreate = ({ onVoteUpdate }) => {
         </div>
 
         <div className={styles.formGroup}>
-          <label className={styles.label}>투표 마감일</label>
+            
+
+
+            
+          <h3 className={styles.voteSubtitle}>투표 마감일</h3>
           <input
             type="datetime-local"
             className={styles.input}
@@ -75,7 +89,7 @@ const VoteCreate = ({ onVoteUpdate }) => {
         </div>
 
         <div className={styles.formGroup}>
-          <label className={styles.label}>투표 항목</label>
+          <h3 className={styles.voteSubtitle}>투표 항목</h3>
           {voteOptions.map((option, index) => (
             <div key={option.id} className={styles.optionContainer}>
               <input
@@ -96,54 +110,71 @@ const VoteCreate = ({ onVoteUpdate }) => {
               )}
             </div>
           ))}
-          <button
-            type="button"
-            onClick={addOption}
-            className={styles.addOptionButton}
-          >
-            + 선택지 추가
-          </button>
+
+          {voteOptions.length < 10 && (
+            <button
+                type="button"
+                onClick={addOption}
+                className={styles.addOptionButton}
+            >
+                + 선택지 추가
+            </button>
+            )}
         </div>
 
+        
+
         <div className={styles.settingsPanel}>
-          <div className={styles.checkboxGroup}>
-            <label className={styles.checkboxLabel}>
-              <input
-                type="checkbox"
-                checked={vote.is_multiple_choice}
-                onChange={(e) => updateVoteSettings('is_multiple_choice', e.target.checked)}
-                className={styles.checkbox}
-              />
-              중복 선택 허용
-            </label>
+            {is_admin && 
+                <div className={styles.checkboxGroup}>
+                    <input
+                        type="checkbox"
+                        checked={vote.is_official}
+                        onChange={(e) => updateVoteSettings('is_official', e.target.checked)}
+                        className={styles.checkbox}
+                    />
+                    <label className={styles.voteText}>공식 투표 여부</label>
+                </div>
+            }
+
+        <div className={styles.checkboxGroup}>
+                <input
+                    type="checkbox"
+                    checked={vote.is_anonymous}
+                    onChange={(e) => updateVoteSettings('is_anonymous', e.target.checked)}
+                    className={styles.checkbox}
+                />
+              <label className={styles.voteText}>익명 투표 여부</label>
           </div>
+
+        
+            <div className={styles.checkboxGroup}>
+                <input
+                    type="checkbox"
+                    checked={vote.is_multiple_choice}
+                    onChange={(e) => updateVoteSettings('is_multiple_choice', e.target.checked)}
+                    className={styles.checkbox}
+                />
+                <label className={styles.voteText}>중복 선택 허용 여부</label>
+            </div>
 
           {vote.is_multiple_choice && (
             <div className={styles.checkboxGroup}>
-              <label className={styles.label}>최대 선택 개수</label>
-              <input
-                type="number"
-                min="1"
-                max={voteOptions.length}
-                value={vote.max_choices}
-                onChange={(e) => updateVoteSettings('max_choices', parseInt(e.target.value))}
-                className={styles.numberInput}
-              />
+              <label className={styles.voteSubtext}>최대 선택 개수</label>
+                <input
+                    type="number"
+                    min="1"
+                    max={voteOptions.length}
+                    value={vote.max_choices}
+                    onChange={(e) => updateVoteSettings('max_choices', parseInt(e.target.value))}
+                    className={styles.numberInput}
+                />
             </div>
           )}
 
-          <div className={styles.checkboxGroup}>
-            <label className={styles.checkboxLabel}>
-              <input
-                type="checkbox"
-                checked={vote.is_anonymous}
-                onChange={(e) => updateVoteSettings('is_anonymous', e.target.checked)}
-                className={styles.checkbox}
-              />
-              익명 투표
-            </label>
-          </div>
         </div>
+
+        
 
         <button
           onClick={() => onVoteUpdate(vote, voteOptions)}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Vote from './Vote';
+import Vote from './vote';
 import VoteCreate from './VoteCreate';
 import {
   basicVoteData,
@@ -115,7 +115,7 @@ function TestPage() {
 
       {/* 투표 컴포넌트 또는 생성 컴포넌트 */}
       {selectedExample === 'create' ? (
-        <VoteCreate onVoteUpdate={handleVoteUpdate} />
+        <VoteCreate is_admin="true" onVoteUpdate={handleVoteUpdate} />
       ) : (
         <Vote
           voteData={currentVoteData}

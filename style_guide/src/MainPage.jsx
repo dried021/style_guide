@@ -1,6 +1,7 @@
 import SearchBar from './components/SearchBar';
 import Header from './components/Header';
 import styles from './styles/MainPage.module.css';
+import Vote from './minjeong/vote';
 
 export default function MainPage() {
     return (
@@ -42,10 +43,21 @@ export default function MainPage() {
                 <div className={styles.colorBox}  style={{backgroundColor: '#6b6b6b'}}></div>#6b6b6b
                 <div className={styles.colorBox}  style={{backgroundColor: '#1a8917'}}></div>#1a8917
                 <div className={styles.colorBox}  style={{backgroundColor: '#83D9E0'}}></div>#83D9E0
+                <br/>
+                <br/>
+                <div className={styles.colorBox}  style={{backgroundColor: '#2585C1'}}></div>#2585C1
+                <div className={styles.colorBox}  style={{backgroundColor: '#0B79B8'}}></div>#0B79B8
+                <div className={styles.colorBox}  style={{backgroundColor: '#ABBA17'}}></div>#ABBA17
+                <div className={styles.colorBox}  style={{backgroundColor: '#93AD28'}}></div>#93AD28
+                <div className={styles.colorBox}  style={{backgroundColor: '#F1DC81'}}></div>#F1DC81
+                <div className={styles.colorBox}  style={{backgroundColor: '#EDD470'}}></div>#EDD470
                 </div>
 
                 <h2>Search Bar</h2>
                 <SearchBar placeholder="검색어 입력..." title="검색 항목" recommended={["검색어", "검색어", "검색어"]}/>
+
+                <Vote/>
+                
             </div>
         </div>
     );

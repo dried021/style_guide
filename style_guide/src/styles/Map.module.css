@@ -1,0 +1,71 @@
+/* src/styles/Map.module.css */
+
+.mapContainer {
+  height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+  padding: 10%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* map + buttons */
+  align-items: center;
+  overflow: hidden; 
+  padding: 1rem 0;
+  box-sizing: border-box;
+}
+
+.map {
+  width: 100%;
+  height: auto;
+  flex-grow: 1;
+}
+
+.btnOutline {
+  border: 0.5px solid black;
+  background: white;
+  color: var(--color-text-primary);
+  margin-right: 5px;
+}
+
+.btnOutline:hover {
+    background-color: black;
+    color: white;
+}
+
+.toggleBtn {
+    margin-top: 50; 
+}
+
+.optionContent {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* space between icon and text */
+}
+
+.icon {
+  height: 1em;
+  vertical-align: middle;
+}
+
+.btnTopLeftContainer {
+    position: absolute;
+    left: 3vw;
+}
+
+.btnTopContainer {
+    position: absolute;
+    margin-top: 10px;
+}
+
+.btnBottomContainer {
+    position: absolute;
+    left: 5vw;
+    bottom: 10vh;
+}
+
+.btnBottomRightContainer {
+    position: absolute;
+    right: 5vw;
+    bottom: 10vh; 
+}

@@ -2,11 +2,11 @@ import React from 'react';
 import styles from '../styles/SearchBar.module.css';
 import search_icon from '../assets/search_grey.svg';
 
-export default function SearchBar({placeholder="", title, onSearchChange=() => {}, recommended=[]}) {
+export default function SearchBar({placeholder="", title, onSearchChange=() => {}, recommended=[], barWidth="100%"}) {
     return (
         <div className={styles.searchContainer}>
             <h1 className={styles.searchTitle}>{title}</h1>
-            <div className={styles.searchBar}>
+            <div className={styles.searchBar} style={{width: barWidth}}>
                 <img src={search_icon}/>
                 <input
                     type="text"

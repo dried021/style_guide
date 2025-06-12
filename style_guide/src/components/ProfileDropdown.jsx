@@ -1,5 +1,6 @@
 // components/ProfileDropdown.jsx
 import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../styles/ProfileDropdown.module.css';
 import profileIcon from '../assets/profile-menu/profile.svg';
 import globeIcon from '../assets/profile-menu/globe.svg';
@@ -30,9 +31,11 @@ export default function ProfileDropdown() {
 
       {open && (
         <div className={styles.dropdownMenu}>
-          <div className={styles.dropdownItem}>
-            <img src={profileIcon}/>프로필
-          </div>
+          <Link to="/profile">
+            <div className={styles.dropdownItem}>
+              <img src={profileIcon}/>프로필
+            </div>
+          </Link>
           <div className={styles.dropdownItem}>
             <img src={globeIcon}/>국가
           </div>

@@ -50,7 +50,7 @@ const Map = forwardRef((props, ref) => {
                                 <Geography 
                                     key={geo.rsmKey}
                                     geography={geo}
-                                    fill={geo.id === selectedCountry.id ? "#58BEB2" : geographyFill}
+                                    fill={geo.id === selectedCountry.id ? "#999" : geographyFill}
                                     stroke={geogrphyStrokeColor}
                                     strokeWidth={geographyStrokeWidth}
                                     onMouseEnter={() => {
@@ -71,11 +71,11 @@ const Map = forwardRef((props, ref) => {
                             dx={-30}
                             dy={-15}
                             connectorProps={{
-                                stroke: "#58BEB2",
+                                stroke: "#999",
                                 strokeWidth: 0.5
                             }}
                         >
-                            <text x="-8" textAnchor="end" alignmentBaseline="middle" fill="#58BEB2" fontSize="7" fontFamily="Pixelify Sans">
+                            <text x="-8" textAnchor="end" alignmentBaseline="middle" fill="#999" fontSize="7" fontFamily="Pixelify Sans">
                                 {selectedCountry.name}
                             </text>
                         </Annotation>

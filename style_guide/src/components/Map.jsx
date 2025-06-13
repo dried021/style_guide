@@ -1,15 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { ComposableMap, Geographies, Geography, Sphere, Graticule } from "react-simple-maps";
 import geography from "../../public/features.json";
 import styles from "../styles/Map.module.css";
-import ToggleBtn from "./ToggleBtn";
-import lockIcon from "../assets/lock_white.svg";
-import shareIcon from "../assets/share_grey.svg";
-import SearchBar from "./SearchBar";
 
-// TODO: Condition lock icon on premium membership
-// TODO: Condition country color on visited countries data
-// TODO: Search bar: Add onChange function
+// TODO: Tooltip show visit date
+// TODO: Add onClick function (show sidebar linking travel entries)
 
 export default function Map(
     {
@@ -22,8 +17,17 @@ export default function Map(
         geographyStrokeWidth=0.5
     }
 ) {
+    const [tooltipContent, setTooltipContent] = useState("");
+    const [tooltipPos, setTooltipPos] = useState({x: 0, y: 0}); 
+    const [showTooltip, setShowTooltip] = useState(false); 
+
     return (
-        <div className={styles.mapContainer}>
+        <div 
+            className={styles.mapContainer}
+            onMouseMove={(e) => {
+                setTooltipPos({x: e.clientX + 10, y: e.clientY + 10});
+            }}
+        >
             <ComposableMap className={styles.map}
                 projectionConfig={{
                 rotate: [-10, 0, 0],
@@ -35,12 +39,31 @@ export default function Map(
                 <Geographies geography={geography}>
                     {({geographies}) => 
                         geographies.map((geo) => (
-                            <Geography key={geo.rsmKey} geography={geo} fill={geographyFill} stroke={geogrphyStrokeColor} strokeWidth={geographyStrokeWidth}/>
+                            <Geography 
+                                key={geo.rsmKey}
+                                geography={geo}
+                                fill={geographyFill}
+                                stroke={geogrphyStrokeColor}
+                                strokeWidth={geographyStrokeWidth}
+                                onMouseEnter={() => {
+                                    const name = geo.properties.name;
+                                    setTooltipContent(name);
+                                    setShowTooltip(true);
+                                }}
+                                onMouseLeave={() => {
+                                    setShowTooltip(false);
+                                }}
+                            />
                         ))
                     }
                 </Geographies>
-
             </ComposableMap>
+
+            {showTooltip && (
+                <div className={styles.tooltip} style={{left: tooltipPos.x, top: tooltipPos.y}}>
+                    {tooltipContent}
+                </div>
+            )}
         </div>
     );
 }
